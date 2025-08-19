@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile  // We'll add this file next
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity  // Keeps container running for dev
+    networks:
+      - default
+    environment:
+      - DB_HOST=db
+      - DB_NAME=trading_db
+      - DB_USER=root
+      - DB_PASSWORD=your_secure_password  // Change this; use secrets in production
+      - REDIS_URL=redis://redis:6379/0
+
+  db:
+    image: mariadb:10.6  // Matches common Virtualmin MariaDB version
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: your_secure_password
+      MYSQL_DATABASE: trading_db
+    networks:
+      - default
+    ports:
+      - "3306:3306"  // Expose for local access
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - "6379:6379"  // Expose for local access
+
+volumes:
+  db-data:
+networks:
+  default:
