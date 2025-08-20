@@ -1,4 +1,4 @@
-#Prompt: Thought for 31s
+""" Prompt:
 
 Build a Django backend for a fully functional trading platform web application, integrated with Interactive Brokers (IB) TWS API as the primary broker, and modular support for additional brokers like KuCoin, Exness, and eToro. The backend should use Django 4.x with REST Framework for APIs, Channels for WebSockets, Celery for background tasks, and Redis for caching. Structure the project with apps for auth, trading, admin_panel, brokers, and payments. Use MariaDB as the database via Django ORM.
 
@@ -26,4 +26,4 @@ Key backend components and requirements:
     Utils: Fee calculator, multi-currency converter (using rates from brokers), error handlers for broker failovers.
     Tests: Include pytest setups for models, views, integrations (mock brokers with unittest.mock).
 
-Generate the complete code for the backend, starting with the main 'manage.py' and 'wsgi.py'/'asgi.py', then settings.py, urls.py, and app-specific files (models.py, views.py, serializers.py, consumers.py, tasks.py). Use placeholders for env vars (e.g., os.environ.get('IB_API_KEY')). Ensure it's deployable to Apache with mod_wsgi, and compatible with Docker/MariaDB/Redis.
+Generate the complete code for the backend, starting with the main 'manage.py' and 'wsgi.py'/'asgi.py', then settings.py, urls.py, and app-specific files (models.py, views.py, serializers.py, consumers.py, tasks.py). Use placeholders for env vars (e.g., os.environ.get('IB_API_KEY')). Ensure it's deployable to Apache with mod_wsgi, and compatible with Docker/MariaDB/Redis. """
